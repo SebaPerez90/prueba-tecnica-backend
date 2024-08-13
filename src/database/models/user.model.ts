@@ -1,12 +1,11 @@
 import { Schema, model } from "mongoose";
 
 const UserSchema = new Schema({
-  title: String,
-  poster: String,
-  rate: Number,
-  director: String,
-  genre: Array,
-  year: Number,
+  name: String,
+  lastName: String,
+  birthDate: String,
+  password: String,
+  email: String,
 });
 
-export const Movie = model("Movie", UserSchema);
+export const User = model("User", UserSchema);

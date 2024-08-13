@@ -1,13 +1,20 @@
+import { ProductDto } from "../dtos/product.dto";
 import { ENV } from "../environments";
 
-export const getProductByID = async (id: string) => {
-  const response = await fetch(`${ENV.API_URL_BASE}/products/${id}`);
-  const product = await response.json();
-  return product;
+export const findAll = async (): Promise<ProductDto[] | undefined> => {
+  try {
+    const response = await fetch(`${ENV.API_URL_BASE}`);
+    if (response.ok) {
+      const products: ProductDto[] = (await response.json()) as ProductDto[];
+      return products;
+    }
+  } catch (error) {
+    throw new Error("Error fetching products");
+  }
 };
 
-export const getAllProduct = async () => {
-  const response = await fetch(`${ENV.API_URL_BASE}`);
-  const products = await response.json();
-  return products;
+export const getByID = async (id: string): Promise<ProductDto> => {
+  const response = await fetch(`${ENV.API_URL_BASE}/${id}`);
+  const product: ProductDto = (await response.json()) as ProductDto;
+  return product;
 };
