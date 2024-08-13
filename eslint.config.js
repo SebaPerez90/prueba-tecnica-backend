@@ -9,7 +9,7 @@ export default [
   ...tseslint.configs.recommended,
   {
     rules: {
-      // "no-console": "warn",
+      "no-console": "warn",
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/no-unused-vars": [
         "warn",

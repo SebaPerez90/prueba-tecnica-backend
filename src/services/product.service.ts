@@ -1,11 +1,11 @@
-import { IProduct } from "../dtos/product.dto";
+import { ProductDto } from "../dtos/product.dto";
 import { ENV } from "../environments";
 
-export const findAll = async (): Promise<IProduct[] | undefined> => {
+export const findAll = async (): Promise<ProductDto[] | undefined> => {
   try {
     const response = await fetch(`${ENV.API_URL_BASE}`);
     if (response.ok) {
-      const products: IProduct[] = (await response.json()) as IProduct[];
+      const products: ProductDto[] = (await response.json()) as ProductDto[];
       return products;
     }
   } catch (error) {
@@ -13,8 +13,8 @@ export const findAll = async (): Promise<IProduct[] | undefined> => {
   }
 };
 
-export const getByID = async (id: string): Promise<IProduct> => {
+export const getByID = async (id: string): Promise<ProductDto> => {
   const response = await fetch(`${ENV.API_URL_BASE}/${id}`);
-  const product: IProduct = (await response.json()) as IProduct;
+  const product: ProductDto = (await response.json()) as ProductDto;
   return product;
 };

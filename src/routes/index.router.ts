@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express";
-import registerRouter from "./login.route";
+import registerRouter from "./auth.route";
 import usersRouter from "./users.route";
 import productRouter from "./products.route";
 
