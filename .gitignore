@@ -3,3 +3,7 @@ node_modules
 
 # enviroments 
 .development.env
+
+
+# vs config
+.vscode
