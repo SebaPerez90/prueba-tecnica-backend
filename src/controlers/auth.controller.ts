@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { signup } from "../services/auth.service";
+import { signup, checkCredentials } from "../services/auth.service";
 import { postUser } from "../services/user.service";
 
 export const createUser = async (req: Request, res: Response) => {
@@ -13,23 +13,25 @@ export const createUser = async (req: Request, res: Response) => {
         .json({ error: "Invalid email format. Enter a valid email plis." });
     } else {
       await signup(req.body);
-      const newUser = await postUser(req.body);
+      await postUser(req.body);
 
-      const user_info = {
-        name: newUser.name,
-        lastName: newUser.lastName,
-        birthDate: newUser.birthDate,
-      };
-
-      res
-        .status(201)
-        .json({ message: "User registered successfully.", user_info });
+      res.status(201).json({ message: "User registered successfully." });
     }
   } catch (error) {
-    res.status(500).json({ error: (error as Error).message });
+    res.status(400).json({ error: (error as Error).message });
   }
 };
 
-export const login = (req: Request, res: Response) => {
-  res.json("hello world");
+export const login = async (req: Request, res: Response) => {
+  try {
+    const userCredentials = await checkCredentials(req.body);
+    const user = {
+      name: userCredentials.name,
+      phone: userCredentials.phone,
+    };
+
+    res.json({ message: "User authenticated successfully.", user });
+  } catch (error) {
+    res.status(404).json({ error: (error as Error).message });
+  }
 };
