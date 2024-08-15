@@ -13,20 +13,12 @@ export const createUser = async (req: Request, res: Response) => {
         .json({ error: "Invalid email format. Enter a valid email plis." });
     } else {
       await signup(req.body);
-      const newUser = await postUser(req.body);
+      await postUser(req.body);
 
-      const user_info = {
-        name: newUser.name,
-        lastName: newUser.lastName,
-        birthDate: newUser.birthDate,
-      };
-
-      res
-        .status(201)
-        .json({ message: "User registered successfully.", user_info });
+      res.status(201).json({ message: "User registered successfully." });
     }
   } catch (error) {
-    res.status(500).json({ error: (error as Error).message });
+    res.status(400).json({ error: (error as Error).message });
   }
 };
 

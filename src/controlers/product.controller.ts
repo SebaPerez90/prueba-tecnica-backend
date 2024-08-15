@@ -1,4 +1,4 @@
-import { getByID, findAll } from "../services/product.service";
+import { getByID, findAll, allCategories } from "../services/product.service";
 import { Request, Response } from "express";
 
 export const getAllProduct = async (req: Request, res: Response) => {
@@ -8,6 +8,19 @@ export const getAllProduct = async (req: Request, res: Response) => {
       res.status(404).json({ message: "No products found" });
     } else {
       res.status(200).json(products);
+    }
+  } catch (error) {
+    res.status(500).json({ error: (error as Error).message });
+  }
+};
+
+export const getAllCategories = async (req: Request, res: Response) => {
+  try {
+    const categories = await allCategories();
+    if (categories?.length === 0) {
+      res.status(404).json({ message: "No categories found" });
+    } else {
+      res.status(200).json(categories);
     }
   } catch (error) {
     res.status(500).json({ error: (error as Error).message });
