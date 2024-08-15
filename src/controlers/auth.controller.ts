@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { signup } from "../services/auth.service";
+import { signup, checkCredentials } from "../services/auth.service";
 import { postUser } from "../services/user.service";
 
 export const createUser = async (req: Request, res: Response) => {
@@ -22,6 +22,16 @@ export const createUser = async (req: Request, res: Response) => {
   }
 };
 
-export const login = (req: Request, res: Response) => {
-  res.json("hello world");
+export const login = async (req: Request, res: Response) => {
+  try {
+    const userCredentials = await checkCredentials(req.body);
+    const user = {
+      name: userCredentials.name,
+      phone: userCredentials.phone,
+    };
+
+    res.json({ message: "User authenticated successfully.", user });
+  } catch (error) {
+    res.status(404).json({ error: (error as Error).message });
+  }
 };
