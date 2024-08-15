@@ -1,13 +1,8 @@
 import app from "./app";
 import conectionDB from "./database/config/conectionDB";
-// import { ENV } from "./environments";
 
 const PORT = process.env.PORT || 3000;
-
 conectionDB()
-  .then(() =>
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}.`);
-    })
-  )
+  .then(() => app.listen(PORT, () => {}))
+  // eslint-disable-next-line no-console
   .catch((error) => console.error(error));
