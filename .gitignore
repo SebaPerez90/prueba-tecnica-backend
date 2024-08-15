@@ -3,7 +3,3 @@ node_modules
 
 # enviroments 
 .development.env
-
-# production
-/dist
-
