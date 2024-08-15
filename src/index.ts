@@ -1,12 +1,12 @@
 import app from "./app";
 import conectionDB from "./database/config/conectionDB";
-import { ENV } from "./environments";
+// import { ENV } from "./environments";
 
 const PORT = process.env.PORT || 3000;
 
 conectionDB()
   .then(() =>
-    app.listen(ENV.SERVER_PORT, () => {
+    app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}.`);
     })
   )
