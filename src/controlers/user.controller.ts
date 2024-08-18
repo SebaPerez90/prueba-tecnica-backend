@@ -9,7 +9,12 @@ export const getAllUser = async (req: Request, res: Response) => {
     if (users.length === 0) {
       res.status(404).json({ message: "No users found" });
     } else {
-      res.status(200).json(users);
+      const filteredUsers = users.map((user) => ({
+        id: user.id,
+        name: user.name,
+        phone: user.phone,
+      }));
+      res.status(200).json(filteredUsers);
     }
   } catch (error) {
     res.status(500).json({ message: (error as Error).message });
