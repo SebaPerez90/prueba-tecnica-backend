@@ -10,7 +10,7 @@ const authRouter = (0, express_1.Router)();
  */
 /**
  * @swagger
- * /login:
+ * /api/v1/login:
  *   post:
  *     tags:
  *       - Authentication
@@ -39,7 +39,7 @@ const authRouter = (0, express_1.Router)();
 authRouter.post("/api/v1/login", auth_controller_1.login);
 /**
  * @swagger
- * /signup:
+ * /api/v1/signup:
  *   post:
  *     tags:
  *       - Authentication

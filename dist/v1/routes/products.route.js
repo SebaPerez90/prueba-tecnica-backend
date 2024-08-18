@@ -10,7 +10,7 @@ const productRouter = (0, express_1.Router)();
  */
 /**
  * @swagger
- * /products:
+ * /api/v1/products:
  *   get:
  *     tags:
  *       - Products
@@ -29,7 +29,7 @@ productRouter.get("/api/v1/products", product_controller_1.getAllProduct);
 productRouter.get("/api/v1/categories", product_controller_1.getAllCategories);
 /**
  * @swagger
- * /products/{id}:
+ * /api/v1/products/{id}:
  *   get:
  *     tags:
  *       - Products

@@ -17,10 +17,38 @@ export const findAll = async (
   return users;
 };
 
+export const findOne = async (id: string): Promise<UserDto> => {
+  const userFound = (await User.findById({ _id: id })) as UserDto;
+  if (!userFound) {
+    throw new Error(`User with id: ${id} not found`);
+  }
+  return userFound;
+};
+
 export const postUser = async (userData: UserDto): Promise<UserDto> => {
   const newUser = await User.create(userData);
 
   newUser.password = await bcrypt.hash(userData.password, 10);
   await newUser.save();
   return newUser as UserDto;
+};
+
+export const updateOnebyID = async (
+  id: string,
+  updatedUserData: Partial<UserDto>
+): Promise<UserDto> => {
+  const userFound = (await User.findByIdAndUpdate(id, updatedUserData, {
+    new: true,
+  })) as UserDto;
+
+  if (!userFound) throw new Error(`User with id: ${id} not found`);
+  return userFound;
+};
+
+export const deleteOne = async (id: string) => {
+  const user = (await User.findById({ _id: id })) as UserDto;
+  const userDeleted = await User.deleteOne({ _id: id });
+
+  if (!user) throw new Error(`User with id: ${id} not found`);
+  return { userDeleted, user };
 };

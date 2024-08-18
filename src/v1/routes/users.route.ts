@@ -1,5 +1,10 @@
 import { Router } from "express";
-import { getAllUser } from "../../controlers/user.controller";
+import {
+  deleteUser,
+  getAllUser,
+  getUserById,
+  updateUser,
+} from "../../controlers/user.controller";
 
 const usersRouter = Router();
 
@@ -8,6 +13,36 @@ const usersRouter = Router();
  * tags:
  *   - name: Users
  */
+
+/**
+ * @swagger
+ * /api/v1/users/{uuid}:
+ *   get:
+ *     tags:
+ *       - Users
+ *     summary: Get user by ID.
+ *     parameters:
+ *       - in: path
+ *         name: uuid
+ *         required: true
+ *         description: User UUID. Must be a string.
+ *         example: "66be1800e940ee5c779af54e"
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Success
+ *       404:
+ *         description: User with id xxxxxx not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ */
+
+usersRouter.get("/api/v1/users/:uuid", getUserById);
 
 /**
  * @swagger
@@ -43,5 +78,65 @@ const usersRouter = Router();
  */
 
 usersRouter.get("/api/v1/users/:page?/:limit?", getAllUser);
+
+/**
+ * @swagger
+ * /api/v1/users/{uuid}:
+ *   patch:
+ *     tags:
+ *       - Users
+ *     summary: Update user by ID.
+ *     parameters:
+ *       - in: path
+ *         name: uuid
+ *         required: true
+ *         description: User UUID. Must be a string.
+ *         example: "66be1800e940ee5c779af54e"
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Success.
+ *       404:
+ *         description: User with id not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ */
+
+usersRouter.patch("/api/v1/users/:uuid", updateUser);
+
+/**
+ * @swagger
+ * /api/v1/users/{uuid}:
+ *   delete:
+ *     tags:
+ *       - Users
+ *     summary: Delete user by ID.
+ *     parameters:
+ *       - in: path
+ *         name: uuid
+ *         required: true
+ *         description: User UUID. Must be a string.
+ *         example: "66be1800e940ee5c779af54e"
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: User deleted successfully.
+ *       404:
+ *         description: User with id not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ */
+
+usersRouter.delete("/api/v1/users/:uuid", deleteUser);
 
 export default usersRouter;

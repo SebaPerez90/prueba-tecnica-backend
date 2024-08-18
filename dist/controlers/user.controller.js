@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllUser = void 0;
+exports.deleteUser = exports.updateUser = exports.getUserById = exports.getAllUser = void 0;
 const user_service_1 = require("../services/user.service");
 const getAllUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -32,3 +32,47 @@ const getAllUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.getAllUser = getAllUser;
+const getUserById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        const userFound = yield (0, user_service_1.findOne)(id);
+        const user = {
+            name: userFound.name,
+            phone: userFound.phone,
+        };
+        res.status(200).json(user);
+    }
+    catch (error) {
+        res.status(404).json({ error: error.message });
+    }
+});
+exports.getUserById = getUserById;
+const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        const userFound = yield (0, user_service_1.updateOnebyID)(id, req.body);
+        const user = {
+            id: userFound.id,
+            name: userFound.name,
+            phone: userFound.phone,
+        };
+        res.status(200).json(user);
+    }
+    catch (error) {
+        res.status(404).json({ error: error.message });
+    }
+});
+exports.updateUser = updateUser;
+const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        const { user } = yield (0, user_service_1.deleteOne)(id);
+        res
+            .status(200)
+            .json({ message: "User deleted successfully", userDeleted: user });
+    }
+    catch (error) {
+        res.status(404).json({ error: error.message });
+    }
+});
+exports.deleteUser = deleteUser;
