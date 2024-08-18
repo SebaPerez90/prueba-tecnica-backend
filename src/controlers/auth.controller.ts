@@ -18,7 +18,7 @@ export const createUser = async (req: Request, res: Response) => {
       res.status(201).json({ message: "User registered successfully." });
     }
   } catch (error) {
-    res.status(400).json({ error: (error as Error).message });
+    res.status(409).json({ error: (error as Error).message });
   }
 };
 
@@ -30,8 +30,8 @@ export const login = async (req: Request, res: Response) => {
       phone: userCredentials.phone,
     };
 
-    res.json({ message: "User authenticated successfully.", user });
+    res.status(200).json({ message: "User authenticated successfully.", user });
   } catch (error) {
-    res.status(404).json({ error: (error as Error).message });
+    res.status(400).json({ error: (error as Error).message });
   }
 };
