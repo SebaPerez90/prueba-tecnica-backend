@@ -45,12 +45,14 @@ productRouter.get("/categories", getAllCategories);
  *       - in: path
  *         name: id
  *         required: true
- *         description: ID of the product to get
+ *         description: ID of the product to get. Must be a number
  *         schema:
  *           type: string
  *     responses:
  *       200:
  *         description: Success
+ *       400:
+ *         description: The specified pruduct ID is invalid (not a number).
  *       404:
  *         description: Product not found
  */

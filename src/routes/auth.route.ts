@@ -25,17 +25,17 @@ const authRouter = Router();
  *             properties:
  *               email:
  *                 type: string
- *                 description: Must be a valid email address
+ *                 description: Must be your registered email
  *                 example: "useremail@example.com"
  *               password:
  *                 type: string
- *                 description: Must contain special characters !@#$%^&_*
- *                 example: "passwordexample"
+ *                 description: Must be your registered password 
+ *                 example: "password_example"
  *     responses:
  *       200:
- *         description: Login successful
+ *         description: User authenticated successfully.
  *       400:
- *         description: Bad request
+ *         description: Incorrect credentials! Please try again
  */
 
 authRouter.post("/login", login);
@@ -70,13 +70,15 @@ authRouter.post("/login", login);
  *                 example: "useremail@example.com"
  *               password:
  *                 type: string
- *                 description: Must contain special characters !@#$%^&_*
+ *                 description: Must contain at least one special character !@#$%^&_*
  *                 example: "passwordexample"
  *     responses:
- *       200:
- *         description: Login successful
+ *       201:
+ *         description: User registered successfully.
  *       400:
- *         description: Bad request
+ *         description: Invalid email format. Enter a valid email plis.
+ *       409:
+ *         description: Email already exists.
  */
 
 authRouter.post("/signup", createUser);

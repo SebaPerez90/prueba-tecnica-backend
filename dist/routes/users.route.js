@@ -26,27 +26,4 @@ const usersRouter = (0, express_1.Router)();
  *                 type: object
  */
 usersRouter.get("/users", user_controller_1.getAllUser);
-/**
- * @swagger
- * tags:
- *   - name: Users
- */
-/**
- * @swagger
- * /users:
- *   get:
- *     tags:
- *       - Users
- *     summary: Get all users
- *     responses:
- *       200:
- *         description: Success
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
- */
-usersRouter.get("/users/:id", (req, res) => res.send("hola"));
 exports.default = usersRouter;
