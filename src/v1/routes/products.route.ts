@@ -3,7 +3,7 @@ import {
   getAllProduct,
   getProductByID,
   getAllCategories,
-} from "../controlers/product.controller";
+} from "../../controlers/product.controller";
 
 const productRouter = Router();
 
@@ -31,8 +31,8 @@ const productRouter = Router();
  *                 type: object
  */
 
-productRouter.get("/products", getAllProduct);
-productRouter.get("/categories", getAllCategories);
+productRouter.get("/api/v1/products", getAllProduct);
+productRouter.get("/api/v1/categories", getAllCategories);
 
 /**
  * @swagger
@@ -56,6 +56,6 @@ productRouter.get("/categories", getAllCategories);
  *       404:
  *         description: Product not found
  */
-productRouter.get("/products/:id", getProductByID);
+productRouter.get("/api/v1/products/:id", getProductByID);
 
 export default productRouter;

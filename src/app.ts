@@ -1,5 +1,5 @@
 import express from "express";
-import router from "./routes/index.route";
+import router from "./v1/routes/index.route";
 import cors from "cors";
 import morgan from "morgan";
 import swaggerUi from "swagger-ui-express";
@@ -12,7 +12,7 @@ app.use(cors());
 app.use(morgan("dev"));
 
 const swaggerSpec = swaggerJsdoc(options);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/api/v1/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use(router);
 

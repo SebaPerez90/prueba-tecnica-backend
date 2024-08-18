@@ -6,7 +6,7 @@ import productRouter from "./products.route";
 const router = Router();
 
 router.get("/", (_req: Request, res: Response) => {
-  res.send("Swift Cart RestAPI");
+  res.json("Welcome to SwiftCart REST API 🚀");
 });
 router.use(authRouter);
 router.use(usersRouter);

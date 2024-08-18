@@ -39,10 +39,10 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             name: userCredentials.name,
             phone: userCredentials.phone,
         };
-        res.json({ message: "User authenticated successfully.", user });
+        res.status(200).json({ message: "User authenticated successfully.", user });
     }
     catch (error) {
-        res.status(404).json({ error: error.message });
+        res.status(400).json({ error: error.message });
     }
 });
 exports.login = login;

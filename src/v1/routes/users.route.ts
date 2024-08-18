@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAllUser } from "../controlers/user.controller";
+import { getAllUser } from "../../controlers/user.controller";
 
 const usersRouter = Router();
 
@@ -29,6 +29,6 @@ const usersRouter = Router();
  *                 type: object
  */
 
-usersRouter.get("/users/:page?/:limit?", getAllUser);
+usersRouter.get("/api/v1/users/:page?/:limit?", getAllUser);
 
 export default usersRouter;

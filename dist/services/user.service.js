@@ -15,7 +15,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.postUser = exports.findAll = void 0;
 const user_model_1 = require("../database/models/user.model");
 const bcrypt_1 = __importDefault(require("bcrypt"));
-const findAll = () => __awaiter(void 0, void 0, void 0, function* () {
+const findAll = (page, limit) => __awaiter(void 0, void 0, void 0, function* () {
+    if (page && limit) {
+        const users = (yield user_model_1.User.find()
+            .skip((page - 1) * limit)
+            .limit(limit)
+            .exec());
+        return users;
+    }
     const users = (yield user_model_1.User.find({}));
     return users;
 });

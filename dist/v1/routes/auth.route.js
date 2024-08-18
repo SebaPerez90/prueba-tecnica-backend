@@ -1,14 +1,13 @@
-import { Router } from "express";
-import { login, createUser } from "../controlers/auth.controller";
-
-const authRouter = Router();
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_controller_1 = require("../../controlers/auth.controller");
+const authRouter = (0, express_1.Router)();
 /**
  * @swagger
  * tags:
  *   - name: Authentication
  */
-
 /**
  * @swagger
  * /login:
@@ -29,7 +28,7 @@ const authRouter = Router();
  *                 example: "useremail@example.com"
  *               password:
  *                 type: string
- *                 description: Must be your registered password 
+ *                 description: Must be your registered password
  *                 example: "password_example"
  *     responses:
  *       200:
@@ -37,9 +36,7 @@ const authRouter = Router();
  *       400:
  *         description: Incorrect credentials! Please try again
  */
-
-authRouter.post("/login", login);
-
+authRouter.post("/login", auth_controller_1.login);
 /**
  * @swagger
  * /signup:
@@ -80,7 +77,5 @@ authRouter.post("/login", login);
  *       409:
  *         description: Email already exists.
  */
-
-authRouter.post("/signup", createUser);
-
-export default authRouter;
+authRouter.post("/signup", auth_controller_1.createUser);
+exports.default = authRouter;

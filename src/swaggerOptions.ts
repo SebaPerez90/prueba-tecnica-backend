@@ -14,6 +14,16 @@ const swaggerDefinition = {
     //   },
     // },
   },
+  servers: [
+    {
+      url: "http://localhost:3000/api/v1",
+      description: "Development server",
+    },
+    {
+      url: "https://prueba-tecnica-backend.onrender/api/v1",
+      description: "Production server",
+    },
+  ],
   security: [
     {
       bearerAuth: [],
@@ -23,5 +33,5 @@ const swaggerDefinition = {
 
 export const options = {
   swaggerDefinition,
-  apis: ["./src/routes/*.ts"],
+  apis: ["./src/v1/routes/*.ts"],
 };

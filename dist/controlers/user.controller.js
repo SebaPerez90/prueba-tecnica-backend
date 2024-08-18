@@ -13,12 +13,18 @@ exports.getAllUser = void 0;
 const user_service_1 = require("../services/user.service");
 const getAllUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const users = yield (0, user_service_1.findAll)();
+        const { page, limit } = req.query;
+        const users = yield (0, user_service_1.findAll)(Number(page), Number(limit));
         if (users.length === 0) {
             res.status(404).json({ message: "No users found" });
         }
         else {
-            res.status(200).json(users);
+            const filteredUsers = users.map((user) => ({
+                id: user.id,
+                name: user.name,
+                phone: user.phone,
+            }));
+            res.status(200).json(filteredUsers);
         }
     }
     catch (error) {
