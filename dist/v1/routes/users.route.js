@@ -27,5 +27,5 @@ const usersRouter = (0, express_1.Router)();
  *               items:
  *                 type: object
  */
-usersRouter.get("/users/:page?/:limit?", user_controller_1.getAllUser);
+usersRouter.get("/api/v1/users/:page?/:limit?", user_controller_1.getAllUser);
 exports.default = usersRouter;

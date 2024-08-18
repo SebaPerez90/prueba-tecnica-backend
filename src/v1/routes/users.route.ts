@@ -11,11 +11,24 @@ const usersRouter = Router();
 
 /**
  * @swagger
- * /users:
+ * /api/v1/users:
  *   get:
  *     tags:
  *       - Users
- *     summary: Get all users
+ *     summary: Get all users or specify the amount you want to receive.
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         description: Page number to retrieve. Must be a number.
+ *         schema:
+ *           type: number
+ *           default: 1
+ *       - in: query
+ *         name: limit
+ *         description: Limit of the user results list. Must be a number. Must be a number.
+ *         schema:
+ *           type: number
+ *           default: 100
  *     responses:
  *       200:
  *         description: Success

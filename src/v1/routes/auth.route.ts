@@ -11,7 +11,7 @@ const authRouter = Router();
 
 /**
  * @swagger
- * /login:
+ * /api/v1/login:
  *   post:
  *     tags:
  *       - Authentication
@@ -42,7 +42,7 @@ authRouter.post("/api/v1/login", login);
 
 /**
  * @swagger
- * /signup:
+ * /api/v1/signup:
  *   post:
  *     tags:
  *       - Authentication

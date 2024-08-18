@@ -6,9 +6,9 @@ const options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "Swift Cart API",
+      title: "SwiftCart REST API",
       version: "1.0.0",
-      description: "A simple API for managing a shopping cart",
+      description: "A simple API for managing e-commerce logic.",
     },
     // securitySchemes: {
     //   bearerAuth: {

@@ -25,8 +25,8 @@ const productRouter = (0, express_1.Router)();
  *               items:
  *                 type: object
  */
-productRouter.get("/products", product_controller_1.getAllProduct);
-productRouter.get("/categories", product_controller_1.getAllCategories);
+productRouter.get("/api/v1/products", product_controller_1.getAllProduct);
+productRouter.get("/api/v1/categories", product_controller_1.getAllCategories);
 /**
  * @swagger
  * /products/{id}:
@@ -49,5 +49,5 @@ productRouter.get("/categories", product_controller_1.getAllCategories);
  *       404:
  *         description: Product not found
  */
-productRouter.get("/products/:id", product_controller_1.getProductByID);
+productRouter.get("/api/v1/products/:id", product_controller_1.getProductByID);
 exports.default = productRouter;

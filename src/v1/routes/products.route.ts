@@ -15,7 +15,7 @@ const productRouter = Router();
 
 /**
  * @swagger
- * /products:
+ * /api/v1/products:
  *   get:
  *     tags:
  *       - Products
@@ -36,7 +36,7 @@ productRouter.get("/api/v1/categories", getAllCategories);
 
 /**
  * @swagger
- * /products/{id}:
+ * /api/v1/products/{id}:
  *   get:
  *     tags:
  *       - Products

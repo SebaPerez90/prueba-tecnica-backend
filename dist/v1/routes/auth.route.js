@@ -36,7 +36,7 @@ const authRouter = (0, express_1.Router)();
  *       400:
  *         description: Incorrect credentials! Please try again
  */
-authRouter.post("/login", auth_controller_1.login);
+authRouter.post("/api/v1/login", auth_controller_1.login);
 /**
  * @swagger
  * /signup:
@@ -77,5 +77,5 @@ authRouter.post("/login", auth_controller_1.login);
  *       409:
  *         description: Email already exists.
  */
-authRouter.post("/signup", auth_controller_1.createUser);
+authRouter.post("/api/v1/signup", auth_controller_1.createUser);
 exports.default = authRouter;

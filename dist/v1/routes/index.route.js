@@ -9,7 +9,7 @@ const users_route_1 = __importDefault(require("./users.route"));
 const products_route_1 = __importDefault(require("./products.route"));
 const router = (0, express_1.Router)();
 router.get("/", (_req, res) => {
-    res.send("Swift Cart RestAPI");
+    res.json("Welcome to SwiftCart REST API 🚀");
 });
 router.use(auth_route_1.default);
 router.use(users_route_1.default);
