@@ -3,7 +3,9 @@ import { Request, Response } from "express";
 
 export const getAllUser = async (req: Request, res: Response) => {
   try {
-    const users = await findAll();
+    const { page, limit } = req.query;
+    const users = await findAll(Number(page), Number(limit));
+
     if (users.length === 0) {
       res.status(404).json({ message: "No users found" });
     } else {

@@ -19,6 +19,8 @@ const usersRouter = Router();
  *     responses:
  *       200:
  *         description: Success
+ *       404:
+ *         description: No users found
  *         content:
  *           application/json:
  *             schema:
@@ -27,6 +29,6 @@ const usersRouter = Router();
  *                 type: object
  */
 
-usersRouter.get("/users", getAllUser);
+usersRouter.get("/users/:page?/:limit?", getAllUser);
 
 export default usersRouter;
