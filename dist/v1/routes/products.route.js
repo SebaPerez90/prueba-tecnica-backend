@@ -29,16 +29,17 @@ productRouter.get("/api/v1/products", product_controller_1.getAllProduct);
 productRouter.get("/api/v1/categories", product_controller_1.getAllCategories);
 /**
  * @swagger
- * /api/v1/products/{id}:
+ * /api/v1/products/{uuid}:
  *   get:
  *     tags:
  *       - Products
  *     summary: Get product by ID
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: uuid
  *         required: true
  *         description: ID of the product to get. Must be a number
+ *         example: "66be1800e940ee5c779af54e"
  *         schema:
  *           type: string
  *     responses:

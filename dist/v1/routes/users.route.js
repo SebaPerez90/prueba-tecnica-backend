@@ -10,7 +10,7 @@ const usersRouter = (0, express_1.Router)();
  */
 /**
  * @swagger
- * /api/v1/users/:id:
+ * /api/v1/users/{uuid}:
  *   get:
  *     tags:
  *       - Users
@@ -18,6 +18,7 @@ const usersRouter = (0, express_1.Router)();
  *     parameters:
  *       - in: path
  *         name: uuid
+ *         required: true
  *         description: User UUID. Must be a string.
  *         example: "66be1800e940ee5c779af54e"
  *         schema:
@@ -70,14 +71,15 @@ usersRouter.get("/api/v1/users/:uuid", user_controller_1.getUserById);
 usersRouter.get("/api/v1/users/:page?/:limit?", user_controller_1.getAllUser);
 /**
  * @swagger
- * /api/v1/users/:id:
- *   get:
+ * /api/v1/users/{uuid}:
+ *   patch:
  *     tags:
  *       - Users
  *     summary: Update user by ID.
  *     parameters:
  *       - in: path
  *         name: uuid
+ *         required: true
  *         description: User UUID. Must be a string.
  *         example: "66be1800e940ee5c779af54e"
  *         schema:
@@ -97,14 +99,15 @@ usersRouter.get("/api/v1/users/:page?/:limit?", user_controller_1.getAllUser);
 usersRouter.patch("/api/v1/users/:uuid", user_controller_1.updateUser);
 /**
  * @swagger
- * /api/v1/users/:id:
- *   get:
+ * /api/v1/users/{uuid}:
+ *   delete:
  *     tags:
  *       - Users
  *     summary: Delete user by ID.
  *     parameters:
  *       - in: path
  *         name: uuid
+ *         required: true
  *         description: User UUID. Must be a string.
  *         example: "66be1800e940ee5c779af54e"
  *         schema:

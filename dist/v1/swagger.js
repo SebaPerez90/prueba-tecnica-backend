@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
+const swagger_components_1 = require("./swagger.components");
 const options = {
     definition: {
         openapi: "3.0.0",
@@ -36,6 +37,7 @@ const options = {
         //     bearerAuth: [],
         //   },
         // ],
+        components: swagger_components_1.swaggerComponents,
     },
     apis: ["./src/v1/routes/*.ts"],
 };
