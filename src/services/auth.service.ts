@@ -24,7 +24,10 @@ export const checkCredentials = async ({
   }
 
   if (password && userFound.password) {
-    const isPasswordCorrect = bcrypt.compare(password, userFound.password);
+    const isPasswordCorrect = await bcrypt.compare(
+      password,
+      userFound.password
+    );
 
     if (!isPasswordCorrect) {
       throw new Error(`Incorrect credentials! Please try again`);
