@@ -1,6 +1,7 @@
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import { Request, Response, Application } from "express";
+import { swaggerComponents } from "./swagger.components";
 
 const options = {
   definition: {
@@ -33,6 +34,7 @@ const options = {
     //     bearerAuth: [],
     //   },
     // ],
+    components: swaggerComponents,
   },
   apis: ["./src/v1/routes/*.ts"],
 };
