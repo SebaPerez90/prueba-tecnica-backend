@@ -6,7 +6,11 @@ import productRouter from "./products.route";
 const router = Router();
 
 router.get("/", (_req: Request, res: Response) => {
-  res.json("Welcome to SwiftCart REST API 🚀");
+  res.status(200).json({
+    message: "Welcome to SwiftCart REST API 🚀",
+    info: "Visit the documentation url for more details",
+    URL: "https://prueba-tecnica-backend.onrender.com/api/v1/docs/",
+  });
 });
 router.use(authRouter);
 router.use(usersRouter);
