@@ -1,21 +1,16 @@
-import { Router } from "express";
-import {
-  getAllProduct,
-  getProductByID,
-  getAllCategories,
-} from "../controlers/product.controller";
-
-const productRouter = Router();
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const product_controller_1 = require("../../controlers/product.controller");
+const productRouter = (0, express_1.Router)();
 /**
  * @swagger
  * tags:
  *   - name: Products
  */
-
 /**
  * @swagger
- * /products:
+ * /api/v1/products:
  *   get:
  *     tags:
  *       - Products
@@ -30,13 +25,11 @@ const productRouter = Router();
  *               items:
  *                 type: object
  */
-
-productRouter.get("/products", getAllProduct);
-productRouter.get("/categories", getAllCategories);
-
+productRouter.get("/api/v1/products", product_controller_1.getAllProduct);
+productRouter.get("/api/v1/categories", product_controller_1.getAllCategories);
 /**
  * @swagger
- * /products/{id}:
+ * /api/v1/products/{id}:
  *   get:
  *     tags:
  *       - Products
@@ -56,6 +49,5 @@ productRouter.get("/categories", getAllCategories);
  *       404:
  *         description: Product not found
  */
-productRouter.get("/products/:id", getProductByID);
-
-export default productRouter;
+productRouter.get("/api/v1/products/:id", product_controller_1.getProductByID);
+exports.default = productRouter;

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { login, createUser } from "../controlers/auth.controller";
+import { login, createUser } from "../../controlers/auth.controller";
 
 const authRouter = Router();
 
@@ -11,7 +11,7 @@ const authRouter = Router();
 
 /**
  * @swagger
- * /login:
+ * /api/v1/login:
  *   post:
  *     tags:
  *       - Authentication
@@ -29,7 +29,7 @@ const authRouter = Router();
  *                 example: "useremail@example.com"
  *               password:
  *                 type: string
- *                 description: Must be your registered password 
+ *                 description: Must be your registered password
  *                 example: "password_example"
  *     responses:
  *       200:
@@ -38,11 +38,11 @@ const authRouter = Router();
  *         description: Incorrect credentials! Please try again
  */
 
-authRouter.post("/login", login);
+authRouter.post("/api/v1/login", login);
 
 /**
  * @swagger
- * /signup:
+ * /api/v1/signup:
  *   post:
  *     tags:
  *       - Authentication
@@ -81,6 +81,6 @@ authRouter.post("/login", login);
  *         description: Email already exists.
  */
 
-authRouter.post("/signup", createUser);
+authRouter.post("/api/v1/signup", createUser);
 
 export default authRouter;
